@@ -7,6 +7,31 @@
     <title>Document</title>
 </head>
 <body>
+    <script>
+        fetch("http://localhost:3000/birds")
+        .then(resp => resp.json())
+        .then(json => displayBirds(json))
+
+
+        function displayBirds(json) {
+            console.log(json)
+            json.forEach(bird => {
+                displayBird(bird)
+            })
+        }
+
+        function displayBird(bird) {
+            div = document.createElement('div')
+            h1 = document.createElement('h1')
+            p = document.createElement('p')
+            p.textContent = bird.species
+            h1.textContent= bird.name
+            div.appendChild(p)
+            div.appendChild(h1)
+            document.body.appendChild(div)
+            
+        }
+    </script>
     <div>This HTML file isn't part of the Rails app. It is here to help you test JS against Rails as you follow along.</div>
 </body>
 </html>
